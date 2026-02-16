@@ -277,12 +277,6 @@
     }
     .quote-box .quote-author { font-style: normal; text-align: right; margin-top: 6px; color: var(--gray-400); font-size: 12px; }
 
-    /* Cat mascot */
-    .cat-mascot {
-      position: fixed; bottom: 16px; right: 24px; z-index: 100;
-      width: 80px; height: 90px; pointer-events: none;
-    }
-
     /* Callout box (bottom of overview) */
     .callout-box {
       margin-top: 48px; text-align: left;
@@ -320,7 +314,8 @@
 
   <!-- ============ OVERVIEW ============ -->
   <section id="overview" class="page active">
-    <div class="overview">
+    <div class="overview" style="position: relative;">
+      <a href="https://www.youtube.com/@aivtuber2866" target="_blank" style="position: absolute; top: 20px; right: 20px; color: #e07850; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 4px; font-weight: 600; transition: color 0.2s;" onmouseover="this.style.color='#c45a30'" onmouseout="this.style.color='#e07850'">&#8599; 出典: にゃんたのAIちゃんねる</a>
       <div class="top-badge">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L9 9H2l6 4.5L5.5 22 12 17l6.5 5-2.5-8.5L22 9h-7z"/></svg>
         AIコーディングツールの進化
@@ -762,41 +757,6 @@
       </div>
     </div>
   </section>
-
-  <!-- ============ CAT MASCOT ============ -->
-  <div class="cat-mascot">
-    <svg viewBox="0 0 100 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Ears -->
-      <polygon points="20,45 30,10 42,40" fill="#f5f5f5" stroke="#d1d5db" stroke-width="2"/>
-      <polygon points="80,45 70,10 58,40" fill="#f5f5f5" stroke="#d1d5db" stroke-width="2"/>
-      <polygon points="25,42 32,18 38,40" fill="#fecaca"/>
-      <polygon points="75,42 68,18 62,40" fill="#fecaca"/>
-      <!-- Head -->
-      <ellipse cx="50" cy="55" rx="32" ry="28" fill="#f5f5f5" stroke="#d1d5db" stroke-width="2"/>
-      <!-- Eyes -->
-      <ellipse cx="38" cy="52" rx="4" ry="4.5" fill="#374151"/>
-      <ellipse cx="62" cy="52" rx="4" ry="4.5" fill="#374151"/>
-      <ellipse cx="39.5" cy="50.5" rx="1.5" ry="1.5" fill="white"/>
-      <ellipse cx="63.5" cy="50.5" rx="1.5" ry="1.5" fill="white"/>
-      <!-- Nose -->
-      <polygon points="50,58 47,62 53,62" fill="#fca5a5"/>
-      <!-- Mouth -->
-      <path d="M47 63 Q50 67 53 63" stroke="#d1d5db" stroke-width="1.5" fill="none"/>
-      <!-- Whiskers -->
-      <line x1="10" y1="55" x2="32" y2="58" stroke="#d1d5db" stroke-width="1.5"/>
-      <line x1="10" y1="62" x2="32" y2="62" stroke="#d1d5db" stroke-width="1.5"/>
-      <line x1="68" y1="58" x2="90" y2="55" stroke="#d1d5db" stroke-width="1.5"/>
-      <line x1="68" y1="62" x2="90" y2="62" stroke="#d1d5db" stroke-width="1.5"/>
-      <!-- Body -->
-      <ellipse cx="50" cy="95" rx="24" ry="22" fill="#f5f5f5" stroke="#d1d5db" stroke-width="2"/>
-      <!-- Paws -->
-      <ellipse cx="36" cy="112" rx="8" ry="5" fill="#f5f5f5" stroke="#d1d5db" stroke-width="1.5"/>
-      <ellipse cx="64" cy="112" rx="8" ry="5" fill="#f5f5f5" stroke="#d1d5db" stroke-width="1.5"/>
-      <!-- Cheeks (blush) -->
-      <ellipse cx="30" cy="60" rx="5" ry="3" fill="#fecaca" opacity="0.6"/>
-      <ellipse cx="70" cy="60" rx="5" ry="3" fill="#fecaca" opacity="0.6"/>
-    </svg>
-  </div>
 
   <!-- ============ JAVASCRIPT ============ -->
   <script>

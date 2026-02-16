@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AIエージェント料金比較 - Claude Code vs Codex CLI</title>
+  <title>AIエージェント料金比較 - Claude Code vs Codex CLI vs GitHub Copilot</title>
   <style>
     * {
       margin: 0;
@@ -19,7 +19,7 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1400px;
       margin: 0 auto;
       padding: 40px 20px 60px;
     }
@@ -40,7 +40,7 @@
 
     .comparison {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 28px;
       margin-bottom: 36px;
     }
@@ -66,6 +66,10 @@
 
     .column-header.codex {
       background: linear-gradient(135deg, #8a9a7a, #7a8b6a);
+    }
+
+    .column-header.copilot {
+      background: linear-gradient(135deg, #5a7abf, #4565a0);
     }
 
     .column-header-left {
@@ -144,6 +148,10 @@
       border-color: #b8c8a8;
     }
 
+    .plan-card.purple {
+      border-color: #c8b8e8;
+    }
+
     .plan-header {
       display: flex;
       justify-content: space-between;
@@ -159,6 +167,7 @@
     .plan-name.blue { color: #4a7faa; }
     .plan-name.orange { color: #c45a30; }
     .plan-name.green { color: #6a7a5a; }
+    .plan-name.purple { color: #6a5aaa; }
 
     .plan-price {
       font-size: 0.85rem;
@@ -171,6 +180,7 @@
     .plan-price.blue { background: #e8eff5; color: #6a8aaa; }
     .plan-price.orange { background: #fce8dc; color: #c45a30; }
     .plan-price.green { background: #e8eee0; color: #6a7a5a; }
+    .plan-price.purple { background: #eee8f5; color: #6a5aaa; }
 
     .plan-features {
       list-style: none;
@@ -198,6 +208,7 @@
     .plan-card.blue .plan-features li::before { background: #4a7faa; }
     .plan-card.orange .plan-features li::before { background: #c45a30; }
     .plan-card.green .plan-features li::before { background: #6a7a5a; }
+    .plan-card.purple .plan-features li::before { background: #6a5aaa; }
 
     .note-box {
       background: #fafaf5;
@@ -216,7 +227,7 @@
     /* Model Section */
     .model-section {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 28px;
       margin-bottom: 36px;
     }
@@ -276,7 +287,7 @@
       left: 0;
       right: 0;
       height: 3px;
-      background: linear-gradient(90deg, #e07850, #8a9a7a);
+      background: linear-gradient(90deg, #e07850, #8a9a7a, #5a7abf);
     }
 
     .callout-banner h3 {
@@ -290,114 +301,6 @@
       color: #888;
     }
 
-    /* Cat */
-    .cat-container {
-      position: fixed;
-      bottom: -5px;
-      right: 20px;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .cat {
-      width: 80px;
-      height: 90px;
-      position: relative;
-    }
-
-    .cat-head {
-      width: 60px;
-      height: 50px;
-      background: #fff;
-      border: 2.5px solid #333;
-      border-radius: 50% 50% 45% 45%;
-      position: absolute;
-      bottom: 30px;
-      left: 10px;
-    }
-
-    .cat-ear-left,
-    .cat-ear-right {
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-bottom: 18px solid #fff;
-      position: absolute;
-    }
-
-    .cat-ear-left {
-      top: -15px;
-      left: 5px;
-    }
-
-    .cat-ear-right {
-      top: -15px;
-      right: 5px;
-    }
-
-    .cat-ear-left::after,
-    .cat-ear-right::after {
-      content: '';
-      width: 0;
-      height: 0;
-      border-left: 10px solid transparent;
-      border-right: 10px solid transparent;
-      border-bottom: 18px solid #333;
-      position: absolute;
-      top: -1px;
-      left: -10px;
-      z-index: -1;
-    }
-
-    .cat-eye {
-      width: 6px;
-      height: 8px;
-      background: #333;
-      border-radius: 50%;
-      position: absolute;
-      top: 18px;
-    }
-
-    .cat-eye.left { left: 16px; }
-    .cat-eye.right { right: 16px; }
-
-    .cat-nose {
-      width: 5px;
-      height: 3px;
-      background: #e8a0a0;
-      border-radius: 50%;
-      position: absolute;
-      top: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .cat-whisker {
-      position: absolute;
-      width: 18px;
-      height: 1.5px;
-      background: #333;
-      top: 30px;
-    }
-
-    .cat-whisker.l1 { left: -5px; transform: rotate(-10deg); }
-    .cat-whisker.l2 { left: -5px; top: 34px; transform: rotate(10deg); }
-    .cat-whisker.r1 { right: -5px; transform: rotate(10deg); }
-    .cat-whisker.r2 { right: -5px; top: 34px; transform: rotate(-10deg); }
-
-    .cat-paw {
-      width: 50px;
-      height: 35px;
-      background: #fff;
-      border: 2.5px solid #333;
-      border-radius: 0 0 12px 12px;
-      position: absolute;
-      bottom: 0;
-      left: 15px;
-      border-top: none;
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .comparison,
@@ -409,7 +312,6 @@
 
       .container { padding: 24px 14px 40px; }
 
-      .cat-container { display: none; }
     }
   </style>
 </head>
@@ -417,7 +319,7 @@
 
   <div class="container">
     <h1>AIコーディングエージェント 料金比較</h1>
-    <p class="subtitle">Claude Code と Codex CLI のプラン・制限を比較</p>
+    <p class="subtitle">Claude Code / Codex CLI / GitHub Copilot のプラン・制限を比較</p>
 
     <!-- Comparison Section -->
     <div class="comparison">
@@ -434,7 +336,7 @@
                 </div>
               </div>
             </div>
-            <a href="https://docs.anthropic.com/en/docs/claude-code" target="_blank" class="column-header-link">&#8599; 出典</a>
+            <a href="https://claude.com/pricing" target="_blank" class="column-header-link">&#8599; 出典</a>
           </div>
           <div class="column-body">
             <!-- Pro -->
@@ -490,7 +392,7 @@
                 </div>
               </div>
             </div>
-            <a href="https://openai.com/index/codex/" target="_blank" class="column-header-link">&#8599; 出典</a>
+            <a href="https://developers.openai.com/codex/pricing/" target="_blank" class="column-header-link">&#8599; 出典</a>
           </div>
           <div class="column-body">
             <!-- Plus -->
@@ -525,6 +427,62 @@
           </div>
         </div>
       </div>
+
+      <!-- GitHub Copilot -->
+      <div class="column">
+        <div>
+          <div class="column-header copilot">
+            <div>
+              <div class="column-header-left">
+                <div class="column-header-icon">&#9998;</div>
+                <div>
+                  <h2>GitHub Copilot</h2>
+                  <p>IDE統合型 / エージェント対応</p>
+                </div>
+              </div>
+            </div>
+            <a href="https://github.com/features/copilot/plans?locale=ja" target="_blank" class="column-header-link">&#8599; 出典</a>
+          </div>
+          <div class="column-body">
+            <!-- Free -->
+            <div class="plan-card blue">
+              <div class="plan-header">
+                <span class="plan-name blue">Free</span>
+                <span class="plan-price blue">$0/月</span>
+              </div>
+              <ul class="plan-features">
+                <li>コード補完: 2,000回/月</li>
+                <li>チャット: 50回/月</li>
+                <li>個人の学習・お試し向け</li>
+              </ul>
+            </div>
+            <!-- Pro -->
+            <div class="plan-card purple">
+              <div class="plan-header">
+                <span class="plan-name purple">Pro</span>
+                <span class="plan-price purple">$10/月</span>
+              </div>
+              <ul class="plan-features">
+                <li>コード補完: 無制限</li>
+                <li>チャット: 無制限</li>
+                <li>エージェントモード対応</li>
+              </ul>
+            </div>
+            <!-- Pro+ -->
+            <div class="plan-card orange">
+              <div class="plan-header">
+                <span class="plan-name orange">Pro+</span>
+                <span class="plan-price orange">$39/月</span>
+              </div>
+              <ul class="plan-features">
+                <li>プレミアムモデル利用枠増加</li>
+                <li>Copilot Coding Agent対応</li>
+                <li>ヘビーユーザー・チーム開発向け</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Model Section -->
@@ -534,7 +492,7 @@
           <div class="model-card-icon">&#9881;</div>
           <h3>Claude Code のモデル</h3>
         </div>
-        <p>汎用言語モデル（Haiku 4.5 / Sonnet 4.5 / Opus 4.5）を使用。自然な日本語での説明が得意で、コードの解説がわかりやすい。</p>
+        <p>汎用言語モデル（Haiku 4.5 / Sonnet 4.5 / Opus 4.6）を使用。自然な日本語での説明が得意で、コードの解説がわかりやすい。</p>
       </div>
       <div class="model-card">
         <div class="model-card-header">
@@ -543,32 +501,26 @@
         </div>
         <p>コーディング特化モデル（Codex-Mini / Codex / Codex-Max）を使用。長時間タスクに強いが、日本語の説明がやや簡素な傾向。</p>
       </div>
+      <div class="model-card">
+        <div class="model-card-header">
+          <div class="model-card-icon">&#9881;</div>
+          <h3>GitHub Copilot のモデル</h3>
+        </div>
+        <p>マルチモデル対応（GPT-4o / Claude Sonnet / Gemini 等）。IDE統合が強力で、コード補完からエージェントまで幅広くカバー。</p>
+      </div>
     </div>
 
     <!-- Callout -->
-    <div class="callout-banner">
-      <h3>利用回数の制限が結構厳しい</h3>
-      <p>どちらのサービスも、プランによって5時間あたりの利用上限が設けられています。ヘビーユースには上位プランの検討を。</p>
+    <div class="callout-banner" style="text-align: left;">
+      <h3 style="text-align: center;">「エージェント対応」と言っても粒度が違います</h3>
+      <ul style="margin: 16px 0 12px 20px; font-size: 0.9rem; color: #555; line-height: 1.8;">
+        <li><strong>Claude Code / Codex CLI</strong> =「プロジェクト全体を理解して自律的に大きなタスクをこなす」フルエージェント</li>
+        <li><strong>Copilot のエージェントモード</strong> = IDE内で段階的にコード修正を提案・適用する、比較的軽量なエージェント</li>
+      </ul>
+      <p style="font-size: 0.9rem; color: #555; text-align: center;">$10で無制限に見えるのは、1回の消費が小さいから成り立つビジネスモデルです。<br>Claude CodeやCodexで同じことをやると、すぐに5時間の上限に達します。</p>
     </div>
   </div>
 
-  <!-- Cat illustration -->
-  <div class="cat-container">
-    <div class="cat">
-      <div class="cat-head">
-        <div class="cat-ear-left"></div>
-        <div class="cat-ear-right"></div>
-        <div class="cat-eye left"></div>
-        <div class="cat-eye right"></div>
-        <div class="cat-nose"></div>
-        <div class="cat-whisker l1"></div>
-        <div class="cat-whisker l2"></div>
-        <div class="cat-whisker r1"></div>
-        <div class="cat-whisker r2"></div>
-      </div>
-      <div class="cat-paw"></div>
-    </div>
-  </div>
 
 </body>
 </html>
